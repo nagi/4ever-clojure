@@ -160,13 +160,13 @@
           For documentation try e.g. (doc map)."]]
        [modal/box {:is-open success-modal-is-open
                    :on-close success-modal-on-close}
-        [:h4 (str "Congratulations on solving problem " "#" id "!")]
-        [:div
-         [:p {:on-click #(reset! success-modal-is-open false)}
+        [:h4 {:key "head"} (str "Congratulations on solving problem " "#" id "!")]
+        [:div {:key "next"}
+         [:p  {:key "pp", :on-click #(reset! success-modal-is-open false)}
           "Next problem "
           [:a {:href next-prob-href}
            (str "#" (:id next-prob) " " (:title next-prob))]]]
-        [:button {:on-click #(set! js/window.location next-prob-href)} "Next Problem"]]])))
+        [:button {:key "button", :on-click #(set! js/window.location next-prob-href)} "Next Problem"]]])))
 
 (defn view [_]
   (fn [{:keys [path-params] :as _props}]

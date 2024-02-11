@@ -2,6 +2,7 @@
   (:require [app.home :as home]
             [app.problem :as problem]
             [app.solution :as solution]
+            [app.state :as state]
             [reagent.core :as r]
             [reitit.frontend :as rf]
             [reitit.frontend.controllers :as rfc]
@@ -14,6 +15,8 @@
          :view home/view}]
    ["/problem" {:name :problem/list
                 :view home/view}]
+   ["/save" {:name :save
+             :view state/view}]
    ["/problem/:id" {:name :problem/item
                     :view problem/view}]
    ["/problem/:id/solutions" {:name :solution/list

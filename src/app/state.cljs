@@ -17,6 +17,10 @@
   {:solutions {}
    :sort-by-solved nil})
 
-(defonce db 
+(defonce db
   (lstore/local-storage (r/atom {})
                         :4ever-clojure))
+
+(defn view[_]
+  [:h1 "Save this stuff..."]
+  [:pre db])

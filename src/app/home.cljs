@@ -26,13 +26,14 @@
       (not (nil? passed)) progress
       :else "-")))
 
-(defn problem-list-item [{:keys [id title _tags difficulty]}]
+(defn problem-list-item [{:keys [id title tags difficulty]}]
   [:tr
    [:td id]
    [:td
     [:a {:href (state/href :problem/item {:id id})}
      title]]
    [:td difficulty]
+   [:td (map str tags)]
    [:td (get-problem-status id)]])
 
 (defn problem-list []
@@ -45,6 +46,7 @@
             [:th {:on-click #(swap! sort-by-solved (fn [] nil))} "No."]
             [:th "Name"]
             [:th "Difficulty"]
+            [:th "Tags"]
             [:th
              {:on-click #(swap! sort-by-solved not)}
              (str "Status  " (case @sort-by-solved
